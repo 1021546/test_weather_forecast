@@ -45,13 +45,21 @@ def extract_weather_data(url, api_key, target_date, days):
 # records = extract_weather_data(BASE_URL, API_KEY, target_date, 5)
 # print(records)
 
+# txt format
 # with open('data.txt', 'wb') as outfile:  
 #     pickle.dump(records,outfile)
+# with open('data.txt', 'rb') as outfile:
+#     records = pickle.load(outfile)
+
+# pkl format
+# with open('data.pkl', 'wb') as fp:  
+#     pickle.dump(records,fp)
+with open('data.pkl', 'rb') as fp:
+    records = pickle.load(fp)
+
+# print(records)
 
 
-with open('data.txt', 'rb') as outfile:
-    records = pickle.load(outfile)
- 
 
 df = pd.DataFrame(records, columns=features).set_index('date')
 
@@ -130,4 +138,9 @@ for precip_col in ['precipm_1', 'precipm_2', 'precipm_3']:
 
 df = df.dropna()
 
+# print(df)
+
+
+# import pandas as pd  
+# df = pd.read_csv('./WeatherPredictPythonML/end-part2_df.csv').set_index('date')
 # print(df)
